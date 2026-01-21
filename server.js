@@ -31,7 +31,7 @@ app.get("/thoughts", (req, res) => {
 
   if (hearts) {
     filteredThoughts = filteredThoughts.filter((thought) => {
-      return thought.hearts > 0
+      return thought.hearts === 0
     })
   }
 
