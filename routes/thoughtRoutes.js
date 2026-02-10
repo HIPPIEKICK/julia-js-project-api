@@ -1,6 +1,6 @@
 import express from "express"
 import mongoose from "mongoose"
-import { authenticateUser } from "../middleware/authMiddleware.js"
+// import { authenticateUser } from "../middleware/authMiddleware.js"
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ const Thought = mongoose.model('Thought', thoughtSchema)
 
 
 // Show all thoughts
-app.get("/thoughts", async (req, res) => {
+router.get("/thoughts", async (req, res) => {
   try {
     const thoughts = await Thought.find().sort({ createdAt: "desc" })
     res.json(thoughts)
@@ -65,7 +65,7 @@ router.get("/thoughts/likes", async (req, res) => {
 })
 
 // Filter by ID
-app.get("/thoughts/:id", async (req, res) => {
+router.get("/thoughts/:id", async (req, res) => {
   const id = req.params.id
 
   try {
@@ -106,7 +106,7 @@ app.get("/thoughts/:id", async (req, res) => {
 
 
 // Post
-app.post("/thoughts", async (req, res) => {
+router.post("/thoughts", async (req, res) => {
   const { message } = req.body
 
   try {
@@ -137,7 +137,7 @@ app.post("/thoughts", async (req, res) => {
 })
 
 // Edit
-app.patch('/thoughts/:id', async (req, res) => {
+router.patch('/thoughts/:id', async (req, res) => {
   try {
     const thought = await Thought.findById(req.params.id)
 
@@ -160,7 +160,7 @@ app.patch('/thoughts/:id', async (req, res) => {
 
 
 // Delete
-app.delete("/thoughts/:id", async (req, res) => {
+router.delete("/thoughts/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const thought = await Thought.findById(id)
