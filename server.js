@@ -8,7 +8,7 @@ import thoughtRoutes from "./routes/thoughtRoutes"
 import userRoutes from "./routes/userRoutes"
 
 const mongoURL = process.env.MONGO_URL
-mongoose.connect(mongoURL).catch(error => console.error("Mongo connection error:", error))
+mongoose.connect(mongoUrl)
 
 if (process.env.RESET_DB === "true") {
   const seedDatabase = async () => {
