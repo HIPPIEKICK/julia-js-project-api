@@ -7,6 +7,8 @@ import listEndpoints from "express-list-endpoints"
 import thoughtRoutes from "./routes/thoughtRoutes"
 import userRoutes from "./routes/userRoutes"
 
+const mongoose = require('mongoose')
+
 const mongoURL = process.env.MONGO_URL
 mongoose.connect(mongoUrl)
 
